@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,7 +59,9 @@ public class PlayerController : MonoBehaviour
                 // calling the jumping method from the PlayerAnimation Script
                 _playerAnimation.jumping(true);
             }
-        }/*else if(Input.GetKeyDown(KeyCode.M))
+        }
+       
+        /*else if(Input.GetKeyDown(KeyCode.M))
         {
 
             _playerAnimation.castSpell(true);
@@ -80,9 +83,7 @@ public class PlayerController : MonoBehaviour
 
         float yInput = Input.GetAxis("Vertical");
         float xInput = Input.GetAxis("Horizontal");
-        
-        
-       // transform.Translate(Vector3.right * xInput * _speed * Time.deltaTime);
+        // transform.Translate(Vector3.right * xInput * _speed * Time.deltaTime);
        // transform.Translate(Vector3.forward * yInput * _speed * Time.deltaTime);
     }
 
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
              //Debug.Log("Dead");
             _playerAnimation.deadAnimation();
             isDead = true;
+            _ScoreManager.gameOver();
 
         }
         else if (collision.gameObject.tag == "Endplatform")
@@ -113,23 +115,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   /* private void OnTriggerEnter(Collider track)
-    {
-        if (track.gameObject.tag == "Endplatform")
-        {
-
-            //Deactivate.deactivated = false;
-            atJump = true;
-            Debug.Log("EndPlatform");
-           
-
-        }
-    }*/
-
    private void OnCollisionExit(Collision track)
     {
-      //if (collision.gameObject.tag == "Endplatform"
-       
+           
        if (track.gameObject.tag == "Platform")
         {
 
@@ -141,7 +129,7 @@ public class PlayerController : MonoBehaviour
     }
     public void pickUpCoin(int score)
     {
-       // Debug.Log(score);
+      
        _ScoreManager.incrementScore(score);
     }
 
