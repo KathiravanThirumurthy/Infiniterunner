@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     private int _score = 0;
     [SerializeField]
     private Text _scoreText;
+    [SerializeField]
+    private Image _gameOver;
     // Intializing Test mesh pro component
     //private TextMeshProUGUI _scoreText;
     void Awake()
@@ -39,5 +42,18 @@ public class ScoreManager : MonoBehaviour
         //Debug.Log("Score:" + _score);
         //updating the UI after the key is collected
         RefreshUI();
+    }
+    public void gameOver()
+    {
+        _gameOver.gameObject.SetActive(true);
+
+    }
+    public void restartLevel()
+    {
+       
+            Debug.Log("Restart");
+        PlayerController.isDead = false;
+            SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
+        
     }
 }
