@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
     public void restartLevel()
     {
        
-            Debug.Log("Restart");
+           // Debug.Log("Restart");
         PlayerController.isDead = false;
             SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
         

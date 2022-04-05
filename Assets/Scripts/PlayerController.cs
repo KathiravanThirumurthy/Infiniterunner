@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public static GameObject currentPlatform;
     public static GameObject _player;
     private PlayerAnimation _playerAnimation;
     [SerializeField]
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         _playerAnimation = GetComponent<PlayerAnimation>();
         _ScoreManager = GameObject.Find("Canvas").GetComponent<ScoreManager>();
         _player = this.gameObject;
+        Generateworld.RunDummy();
 
 
 
@@ -49,16 +51,16 @@ public class PlayerController : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isGrounded)
-            {
-                //adding velocity to the player in the y direction to jump
-                rgdPlayer.velocity = new Vector2(rgdPlayer.velocity.x, _jumpForce);
+            // if (isGrounded)
+            // {
+            //adding velocity to the player in the y direction to jump
+            // rgdPlayer.velocity = new Vector2(rgdPlayer.velocity.x, _jumpForce);
 
-                // when the player is in air it Space bar shouldnt be pressed 
-                isGrounded = false;
-                // calling the jumping method from the PlayerAnimation Script
-                _playerAnimation.jumping(true);
-            }
+            // when the player is in air it Space bar shouldnt be pressed 
+            // isGrounded = false;
+            // calling the jumping method from the PlayerAnimation Script
+             _playerAnimation.jumping(true);
+           // }
         }
        
         /*else if(Input.GetKeyDown(KeyCode.M))
@@ -78,6 +80,10 @@ public class PlayerController : MonoBehaviour
         }*/
     }
     
+    private void StopJump()
+    {
+        _playerAnimation.jumping(false);
+    }
     private void playerMovement()
     {
 
@@ -91,14 +97,14 @@ public class PlayerController : MonoBehaviour
     {
         
         // if the player collides with Ground with tag "Platform"
-        if (collision.gameObject.tag == "Platform")
+       /* if (collision.gameObject.tag == "Platform")
         {
             // to check Grounded
             isGrounded = true;
             // calling the jumping method from the PlayerAnimation Script to jump
             _playerAnimation.jumping(false);
-        }
-        else if (collision.gameObject.tag == "Fire")
+        }*/
+       /* else if (collision.gameObject.tag == "Fire")
         {
              //Debug.Log("Dead");
             _playerAnimation.deadAnimation();
@@ -111,21 +117,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Dead");
             
 
-        }
+        }*/
 
     }
 
-   private void OnCollisionExit(Collision track)
+    private void OnTriggerEnter(Collider other)
     {
-           
-       if (track.gameObject.tag == "Platform")
-        {
-
-           
-            PlatformPoolmanager._instance.getObjectFromPool(new Vector3(0, 0, track.transform.position.z+40.0f), transform.rotation);
-          
-        }
-
+      
+        Generateworld.RunDummy();
+     
     }
     public void pickUpCoin(int score)
     {

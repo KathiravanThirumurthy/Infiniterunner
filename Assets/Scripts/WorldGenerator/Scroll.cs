@@ -9,7 +9,8 @@ public class Scroll : MonoBehaviour
     void FixedUpdate()
     {
         if (PlayerController.isDead) return;
-        transform.Translate(Vector3.forward *-5.0f* Time.deltaTime); 
+        // transform.Translate(Vector3.forward *-5.0f* Time.deltaTime); 
+        this.transform.position += PlayerController._player.transform.forward * -0.4f;
        
 
     }
