@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Deactivate : MonoBehaviour
 {
-  
+   private bool deactivated = false;
     private void OnCollisionExit(Collision player)
     {
+        
         if (PlayerController.isDead) return; 
-        if (player.gameObject.tag == "Player" )
+        if (player.gameObject.tag == "Player" && !deactivated)
         {
             
-            Invoke("SetInactive", 1.0f);
-            
+            Invoke("SetInactive", 2.0f);
+            deactivated = true;
+
         }
 
 
     }
     void SetInactive()
     {
-        PlatformPoolmanager._instance.ReturnObjecttoPool(transform.parent.gameObject);
-     }
+        //PlatformPoolmanager._instance.ReturnObjecttoPool(transform.parent.gameObject);
+        this.gameObject.SetActive(false);
+        deactivated = false;
+    }
    
 }

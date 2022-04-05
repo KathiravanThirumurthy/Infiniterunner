@@ -25,10 +25,10 @@ public class Obstaclehandler : MonoBehaviour
         {
             createObstacle();
         }*/
-        for (int i = 0; i < Random.Range(0, 2); i++)
+     /*   for (int i = 0; i < Random.Range(0, 2); i++)
         {
             createFire();
-        }
+        }*/
        /* for (int i = 0; i < Random.Range(0, 2); i++)
         {
             createBarryGuard();
@@ -45,7 +45,7 @@ public class Obstaclehandler : MonoBehaviour
     {
         // GameObject temp = Instantiate(_obstaclePrefab, new Vector3(Random.Range(-2.0f, 2.0f), 1, Random.Range(transform.position.z - 20, transform.position.z + 20)), Quaternion.identity);
         //temp.transform.parent = gameObject.transform;
-        GameObject temp = Instantiate(_coinPrefab, new Vector3(Random.Range(-2.0f, 2.0f), 1, Random.Range(transform.position.z - 20, transform.position.z + 20)), Quaternion.identity);
+        GameObject temp = Instantiate(_coinPrefab, new Vector3(Random.Range(-2.8f, 2.8f), 1, Random.Range(transform.position.z - 20, transform.position.z + 50)), Quaternion.identity);
         temp.transform.parent = _platformPrefab.transform;
     }
    private void createObstacle()

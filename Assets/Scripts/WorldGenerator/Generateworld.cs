@@ -6,8 +6,8 @@ public class Generateworld : MonoBehaviour
 {
     /*[SerializeField]
     private GameObject[] _platforms;*/
-    private GameObject dummyTraveller;
-    private Vector3 pos= new Vector3(0, 0, 0);
+    static public GameObject dummyTraveller;
+    static public GameObject lastPlatform;
     private void Awake()
     {
         dummyTraveller = new GameObject("dummy");
@@ -16,32 +16,58 @@ public class Generateworld : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*Vector3 pos = new Vector3(0, 0, 0);
-        for(int i=0;i<3;i++)
+      /*  for (int i = 0; i < 10; i++)
         {
-            PlatformPoolmanager._instance.getObjectFromPool(pos,transform.rotation);
-           // Instantiate(_platforms[Random.Range(0,_platforms.Length)],pos,Quaternion.identity);
-            pos.z += 20;
+            GameObject platform = PlatformPoolmanager._instance.getRandom();
+            if (platform == null) return;
+            platform.SetActive(true);
+            platform.transform.position = dummyTraveller.transform.position;
+            platform.transform.rotation = dummyTraveller.transform.rotation;
+            if (platform.tag == "inclined")
+            {
+                dummyTraveller.transform.Translate(0, 5, 0);
+            }
+            else if (platform.tag == "declined")
+            {
+                dummyTraveller.transform.Translate(0, -5, 0);
+                platform.transform.Rotate(new Vector3(0, 180, 0));
+                platform.transform.position = dummyTraveller.transform.position;
+            }
+            else if (platform.tag == "T-section")
+            {
+                platform.transform.Rotate(new Vector3(0, 90, 0));
+                dummyTraveller.transform.Translate(Vector3.forward * -20);
+            }
+
+            dummyTraveller.transform.Translate(Vector3.forward * +20);
+        }*/
+
+
+       /* for (int i = 0; i < 3; i++)
+        {
+           int platformNo = Random.Range(0, _platforms.Length);
+            PlatformPoolmanager._instance.getObjectFromPool(_platforms[platformNo],pos, transform.rotation);
+            
         }*/
        
-        
-      
-        for (int i = 0; i < 3; i++)
-        {
-           /* int platformNo = Random.Range(0, _platforms.Length);
-            PlatformPoolmanager._instance.getObjectFromPool(_platforms[platformNo],pos, transform.rotation);*/
-            PlatformPoolmanager._instance.getObjectFromPool(pos, transform.rotation);
-            // Instantiate(_platforms[Random.Range(0,_platforms.Length)],pos,Quaternion.identity);
-            pos.z += 20;
-        }
         
 
     }
     public static void RunDummy()
     {
-       /* PlatformPoolmanager._instance.getObjectFromPool(pos, transform.rotation);
-        pos.z += 20;*/
+        GameObject platform = PlatformPoolmanager._instance.getRandom();
+        if (platform == null) return;
+        if(lastPlatform != null)
+        {
+            dummyTraveller.transform.position = lastPlatform.transform.position + PlayerController._player.transform.forward*80;
+        }
+        
+        lastPlatform = platform;
+        platform.SetActive(true);
+        platform.transform.position = dummyTraveller.transform.position;
+        platform.transform.rotation = dummyTraveller.transform.rotation;
     }
 
-    
+
+
 }

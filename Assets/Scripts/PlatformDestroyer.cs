@@ -24,7 +24,7 @@ public class PlatformDestroyer : MonoBehaviour
         {
             //Destroy(this.gameObject);
             //this.gameObject.SetActive(false);
-            PlatformPoolmanager._instance.ReturnObjecttoPool(this.gameObject);
+           // PlatformPoolmanager._instance.ReturnObjecttoPool(this.gameObject);
 
 
         }
