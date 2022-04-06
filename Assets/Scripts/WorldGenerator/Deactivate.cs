@@ -12,7 +12,7 @@ public class Deactivate : MonoBehaviour
         if (player.gameObject.tag == "Player" && !deactivated)
         {
             
-            Invoke("SetInactive", 2.0f);
+            Invoke("SetInactive", 4.0f);
             deactivated = true;
 
         }
