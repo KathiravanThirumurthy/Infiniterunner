@@ -51,23 +51,17 @@ public class PlayerController : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // if (isGrounded)
-            // {
-            //adding velocity to the player in the y direction to jump
-            // rgdPlayer.velocity = new Vector2(rgdPlayer.velocity.x, _jumpForce);
-
-            // when the player is in air it Space bar shouldnt be pressed 
-            // isGrounded = false;
-            // calling the jumping method from the PlayerAnimation Script
-             _playerAnimation.jumping(true);
-           // }
-        }
-       
-        /*else if(Input.GetKeyDown(KeyCode.M))
+             // calling the jumping method from the PlayerAnimation Script
+            _playerAnimation.jumping(true);
+            // Adding force to make the collider match with jump animation
+            rgdPlayer.AddForce(Vector3.up*_jumpForce);
+           
+        }       
+       else if(Input.GetKeyDown(KeyCode.M))
         {
 
             _playerAnimation.castSpell(true);
-        }else if(Input.GetKeyDown(KeyCode.RightArrow))
+        } /*else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("rt");
             // this.transform.Rotate(Vector3.up * 90);
@@ -131,6 +125,12 @@ public class PlayerController : MonoBehaviour
     {
         FindObjectOfType<Audiomanager>().Play("pickup");
         _ScoreManager.incrementScore(score);
+    }
+    public void deathAnimation()
+    {
+        _playerAnimation.deadAnimation();
+        FindObjectOfType<Audiomanager>().Play("Death");
+        _ScoreManager.gameOver();
     }
 
 }

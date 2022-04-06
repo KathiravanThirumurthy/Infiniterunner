@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Camerafollow.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Lightingpost.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\Barryguard.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Coinrotate.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Fireobstacle.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Obstaclehandler.cs" />

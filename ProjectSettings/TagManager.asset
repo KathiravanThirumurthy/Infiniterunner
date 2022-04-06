@@ -10,6 +10,7 @@ TagManager:
   - Obstacle1
   - Mainmenubutton
   - Panelmenu
+  - Barryguard
   layers:
   - Default
   - TransparentFX

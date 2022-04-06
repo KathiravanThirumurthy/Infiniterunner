@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Fireobstacle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerController _playercontroller;
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // getting the component of the collision object a
+        _playercontroller = collision.gameObject.GetComponent<PlayerController>();
+        // checking whether the component is available
+        if (_playercontroller != null)
+        {
+
+            PlayerController.isDead = true;
+            _playercontroller.deathAnimation();
+        }
     }
 }
