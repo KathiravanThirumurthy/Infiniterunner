@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AudioManager\Audiomanager.cs" />
+    <Compile Include="Assets\Scripts\AudioManager\Sounds.cs" />
     <Compile Include="Assets\Scripts\Camerafollow.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Lightingpost.cs" />

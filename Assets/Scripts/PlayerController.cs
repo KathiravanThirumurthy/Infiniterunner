@@ -129,8 +129,8 @@ public class PlayerController : MonoBehaviour
     }
     public void pickUpCoin(int score)
     {
-      
-       _ScoreManager.incrementScore(score);
+        FindObjectOfType<Audiomanager>().Play("pickup");
+        _ScoreManager.incrementScore(score);
     }
 
 }

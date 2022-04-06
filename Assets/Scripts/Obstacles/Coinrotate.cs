@@ -11,6 +11,8 @@ public class Coinrotate : MonoBehaviour
     
     [SerializeField]
     private float _speed=4.0f;
+    [SerializeField]
+    private GameObject _particlePrefab;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,9 +35,10 @@ public class Coinrotate : MonoBehaviour
         {
             // on getting the component calling the pickup key method from PlayerController
             _playercontroller.pickUpCoin(_score);
-            //Instantiate(_particles, gameObject.transform.position, Quaternion.identity);
+            Instantiate(_particlePrefab, this.gameObject.transform.position, Quaternion.identity);
+           
             //after collision destroying the collectable item
-            Destroy(this.gameObject);
+            Destroy(this.gameObject ,10);
         }
     }
 }
