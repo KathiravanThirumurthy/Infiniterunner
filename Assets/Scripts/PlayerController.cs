@@ -22,7 +22,12 @@ public class PlayerController : MonoBehaviour
     public static bool isDead=false;
     public static PlayerController player;
     private bool atJump = false;
-    
+    private Audiomanager audiomanager;
+
+    private void Awake()
+    {
+       // audiomanager = FindObjectOfType<Audiomanager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
              // calling the jumping method from the PlayerAnimation Script
             _playerAnimation.jumping(true);
+            FindObjectOfType<Audiomanager>().Play("Jump");
             // Adding force to make the collider match with jump animation
             rgdPlayer.AddForce(Vector3.up*_jumpForce);
            
@@ -61,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
 
             _playerAnimation.castSpell(true);
+            FindObjectOfType<Audiomanager>().Play("Spell");
         } /*else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("rt");
@@ -123,12 +130,13 @@ public class PlayerController : MonoBehaviour
     }
     public void pickUpCoin(int score)
     {
-        FindObjectOfType<Audiomanager>().Play("pickup");
+        FindObjectOfType<Audiomanager>().Play("Coin");
         _ScoreManager.incrementScore(score);
     }
     public void deathAnimation()
     {
         _playerAnimation.deadAnimation();
+        //FindObjectOfType<Audiomanager>().Play("Death");
         FindObjectOfType<Audiomanager>().Play("Death");
         _ScoreManager.gameOver();
     }

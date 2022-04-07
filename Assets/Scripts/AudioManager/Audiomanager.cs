@@ -12,15 +12,16 @@ public class Audiomanager : MonoBehaviour
     {
 
         singleInstance();
-        DontDestroyOnLoad(gameObject);
+       
         foreach (Sounds _sound in _sounds)
         {
-            _sound._source= gameObject.AddComponent<AudioSource>();
-            _sound._source.clip = _sound.audioClip;
+            _sound._source = gameObject.AddComponent<AudioSource>();
+             _sound._source.clip = _sound.audioClip;
             _sound._source.volume = _sound.volume;
             _sound._source.pitch = _sound.pitch;
             _sound._source.loop = _sound.loop;
         }
+        DontDestroyOnLoad(gameObject);
     }
     private void singleInstance()
     {
@@ -40,12 +41,14 @@ public class Audiomanager : MonoBehaviour
 
     public void Play(string name)
     {
-        Sounds snd=Array.Find(_sounds, sound => sound.name == name);
+        Debug.Log(name);
+        Sounds snd = Array.Find(_sounds, sound => sound.nameofAudio == name);
         if (snd == null)
         {
             Debug.LogWarning("Sound:" + name + "not found !");
             return;
         }
         snd._source.Play();
+        
     }
 }
