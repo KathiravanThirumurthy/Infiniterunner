@@ -44,15 +44,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sounds:
-  - name: pickup
+  - nameofAudio: Coin
     audioClip: {fileID: 8300000, guid: a0f723465d3cc9f4fbfc78befa7ff659, type: 3}
     volume: 1
     pitch: 1.77
     loop: 0
     _source: {fileID: 0}
-  - name: Theme
+  - nameofAudio: Theme
     audioClip: {fileID: 8300000, guid: 6aaa0696c6157c84c9808dd3be982aa3, type: 3}
     volume: 0.23
     pitch: 0.63
     loop: 1
+    _source: {fileID: 0}
+  - nameofAudio: Death
+    audioClip: {fileID: 8300000, guid: 8b9c1d0d009f86044a8f21514c5f0634, type: 3}
+    volume: 1
+    pitch: 0.63
+    loop: 0
+    _source: {fileID: 0}
+  - nameofAudio: Spell
+    audioClip: {fileID: 8300000, guid: 5c53829606fa45a44a5f66559b0b2554, type: 3}
+    volume: 1
+    pitch: 0.95
+    loop: 0
+    _source: {fileID: 0}
+  - nameofAudio: Jump
+    audioClip: {fileID: 8300000, guid: 3d03d05a6ea35104789c5382b4371397, type: 3}
+    volume: 1
+    pitch: 0.63
+    loop: 0
     _source: {fileID: 0}
